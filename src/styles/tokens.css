@@ -1,0 +1,68 @@
+/* juliedavila.com — Mexican-modernist identity.
+   Parent of the system already shipped across Camila Hub, Thinker Distillery,
+   and the La Brecha Ghost theme. Do not diverge; extend. */
+
+:root {
+  /* Substrate */
+  --sand:        #F4EFE6;
+  --sand-warm:   #faf7ee;
+  --sand-deep:   #EDE6D7;
+  --rule:        #D9D1C2;
+
+  /* The only structural color */
+  --azul:        #2C4A6B;
+  --azul-deep:   #1E3350;
+  --azul-soft:   #4a6d92;
+
+  /* Reserved. Appears EXACTLY ONCE per page: the one action.
+     If terracotta appears twice, the page has grown a second ask.
+     That is the constraint, not a suggestion. */
+  --terracotta:  #A04A2C;
+
+  /* Rules only. 1px. Never fills. */
+  --gold:        #b09e6b;
+
+  --ink:         #2a2723;
+  --ink-soft:    #6b6459;
+  --ink-faint:   #8B8275;
+
+  /* Humanist serif carries the doctrine — it asserts, it doesn't pitch.
+     Neutral grotesk carries nav and meta. Never all-caps. Never a "cyber" mono headline. */
+  --serif:  "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Charter, Georgia, serif;
+  --sans:   "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  --measure: 34rem;   /* long silences, big margins */
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  background: var(--sand);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body { margin: 0; }
+
+a { color: var(--azul); text-decoration: none; border-bottom: 1px solid var(--rule); }
+a:hover { border-bottom-color: var(--azul); }
+
+::selection { background: var(--azul); color: var(--sand); }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sand: #1a1815;
+    --sand-warm: #211e1a;
+    --sand-deep: #26221d;
+    --rule: #3a352d;
+    --ink: #ece5d8;
+    --ink-soft: #a89f90;
+    --ink-faint: #857c6e;
+    --azul: #7fa3c9;
+    --terracotta: #d4714c;
+  }
+}
