@@ -2,22 +2,15 @@
 import '../styles/tokens.css';
 
 // ─────────────────────────────────────────────────────────────────────────────
-// JULIE'S VOICE SLOTS — these three are hers. Camila does not write them.
-// Until they are filled, the build fails loudly (see the guard below) rather
-// than shipping placeholder prose to a public homepage.
-//
-// Rules from the council:
-//   IDENTITY = a CATEGORY, not a job. A job expires on your last day; a
-//              category outlives every employer. (Shortridge: "product
-//              executive in B2B infrastructure software.")
-//   THESIS   = a falsifiable claim. Something a peer could argue with.
+// VOICE SLOTS — IDENTITY and THESIS are Julie's. Both filled + Council-vetted.
+//   IDENTITY = a CATEGORY, not a job.
+//   THESIS   = a falsifiable claim a peer could argue with.
 //   BRECHA   = one sentence where the word does labor as the noun for the gap.
-//              It does NOT explain the name. Explaining a name performs depth.
 // ─────────────────────────────────────────────────────────────────────────────
 
-const IDENTITY = 'Security executive for enterprise-class platform providers'; // settled 2026-07-13 (do not re-open)
-const THESIS   = 'Security does not choose its own backlog; it derives that mandate from the value streams the business runs on and the quality its market demands. It reserves its deepest scrutiny for where a failure is material, not where it is loud: the blast radius that spreads, the crown jewel that cannot be lost.'; // Council-vetted + Julie-ratified 2026-07-16
-const BRECHA   = ''; // ← Julie (optional at Stage 1; can land at Stage 2)
+const IDENTITY = 'Security executive for enterprise platform providers';
+const THESIS   = 'I build efficient, AI-native security organizations that make R&D value streams faster, while treating security as an emergent property of how the business delivers value to its customers.';
+const BRECHA   = '';
 
 // Build guard: no placeholder ever reaches the public apex.
 if (import.meta.env.PROD && (!IDENTITY || !THESIS)) {
@@ -27,16 +20,13 @@ if (import.meta.env.PROD && (!IDENTITY || !THESIS)) {
   );
 }
 
-// In dev only, show the empty slots as visible markers so the layout can be
-// reviewed without anyone putting words in her mouth.
 const identity = IDENTITY || '[ IDENTITY LINE — a category, not a job ]';
 const thesis   = THESIS   || '[ THESIS — a falsifiable claim a peer could argue with ]';
 const brecha   = BRECHA;
 
-const META_DESCRIPTION = IDENTITY; // never the word "practitioner" again
+const META_DESCRIPTION = IDENTITY;
 
-// Everything below is IMMUTABLE or SELF-UPDATING. Nothing hand-maintained
-// that can silently rot. Past only — "upcoming" is what goes stale.
+// Everything below is IMMUTABLE or SELF-UPDATING. Past only — "upcoming" rots.
 const work = [
   {
     name: 'SF² — the Software Factory Security Framework',
@@ -45,12 +35,33 @@ const work = [
   },
 ];
 
-// Past. Dated. Real titles. A record, not a sizzle reel.
+// Bylined writing — her own thinking, in public. Verified live 2026-07-16.
+const writing = [
+  {
+    date: '2026',
+    title: 'The 2 Failures With AI Coding That Are Creating Security Bottlenecks',
+    outlet: 'The New Stack',
+    href: 'https://thenewstack.io/ai-coding-security-bottlenecks/',
+  },
+  {
+    date: '2025',
+    title: 'Beyond the Hype: 4 Ways To Use AI for Cybersecurity Defenses',
+    outlet: 'The New Stack',
+    href: 'https://thenewstack.io/beyond-the-hype-4-ways-to-use-ai-for-cybersecurity-defenses/',
+  },
+];
+
+// Past. Dated. Real titles. A record, not a sizzle reel. Verified live 2026-07-16.
 const appearances = [
   {
     date: '2026',
     title: 'Keynote — SANS AI Cybersecurity Summit',
     href: 'https://www.sans.org/ai-cybersecurity-summit-2026',
+  },
+  {
+    date: '2025',
+    title: 'Embrace AI Without Losing Control — LeadDev',
+    href: 'https://leaddev.com/event/embrace-ai-without-losing-control',
   },
   {
     date: '2025',
@@ -80,16 +91,32 @@ const elsewhere = [
   <meta property="og:description" content={META_DESCRIPTION} />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://juliedavila.com" />
+  <meta property="og:image" content="https://juliedavila.com/portrait-azul.png" />
   <link rel="canonical" href="https://juliedavila.com" />
 </head>
 
 <body>
   <main>
     <header class="fold">
-      <h1>Julie Davila</h1>
-      <p class="identity" class:list={[{ slot: !IDENTITY }]}>{identity}</p>
-      <p class="thesis" class:list={[{ slot: !THESIS }]}>{thesis}</p>
-      {brecha && <p class="brecha">{brecha}</p>}
+      <div class="intro">
+        <h1>Julie Davila</h1>
+        <p class="identity" class:list={[{ slot: !IDENTITY }]}>{identity}</p>
+        <p class="thesis" class:list={[{ slot: !THESIS }]}>{thesis}</p>
+        {brecha && <p class="brecha">{brecha}</p>}
+        <nav class="chips" aria-label="Find me">
+          <a href="https://linkedin.com/in/thisjulie">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://sf2framework.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            <span>SF²</span>
+          </a>
+        </nav>
+      </div>
+      <figure class="portrait">
+        <img src="/portrait-azul.png" alt="Julie Davila" width="1600" height="1066" loading="eager" />
+      </figure>
     </header>
 
     <hr />
@@ -107,12 +134,24 @@ const elsewhere = [
     </section>
 
     <section>
+      <h2>Writing</h2>
+      <ul class="list dated">
+        {writing.map((p) => (
+          <li>
+            <span class="date">{p.date}</span>
+            <span class="entry"><a href={p.href}>{p.title}</a><span class="note">{p.outlet}</span></span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section>
       <h2>Talks &amp; appearances</h2>
       <ul class="list dated">
         {appearances.map((a) => (
           <li>
             <span class="date">{a.date}</span>
-            <a href={a.href}>{a.title}</a>
+            <span class="entry"><a href={a.href}>{a.title}</a></span>
           </li>
         ))}
       </ul>
@@ -120,8 +159,7 @@ const elsewhere = [
 
     <hr />
 
-    <!-- The one action. The only terracotta on the page.
-         Stage 2: this becomes the La Brecha subscribe, posting to Ghost. -->
+    <!-- The one action. The only terracotta on the page. -->
     <section class="action">
       <p class="soon">La Brecha — essays on the gaps, launching soon.</p>
       <a class="cta" href="mailto:julie@davila.io?subject=La%20Brecha">Tell me when it&rsquo;s live</a>
@@ -137,61 +175,104 @@ const elsewhere = [
 
 <style>
   main {
-    max-width: var(--measure);
+    max-width: 62rem;
     margin: 0 auto;
-    padding: 14vh 1.5rem 8rem;
+    padding: 9vh 1.5rem 8rem;
   }
 
-  .fold { margin-bottom: 3.5rem; }
+  /* ── The fold: name is the hero, portrait is the plane ── */
+  .fold {
+    display: grid;
+    grid-template-columns: 1.05fr 0.82fr;
+    gap: clamp(1.5rem, 5vw, 4rem);
+    align-items: start;   /* top-align: name locks to portrait's top edge, no dead air below the chips */
+    margin: 2vh 0 4.5rem; /* portrait sets the height; no min-height padding out a void */
+  }
 
   h1 {
-    font-family: var(--sans);
+    font-family: var(--serif);
     font-weight: 600;
-    font-size: 1.05rem;
-    letter-spacing: 0.02em;
-    color: var(--ink-soft);
-    margin: 0 0 2.5rem;
+    font-size: clamp(2.7rem, 6.5vw, 4.4rem);
+    line-height: 1.0;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin: 0 0 1.1rem;
+    text-wrap: balance;
   }
 
   .identity {
-    font-size: 1.75rem;
-    line-height: 1.35;
+    font-family: var(--serif);
+    font-size: clamp(1.15rem, 2.4vw, 1.55rem);
+    line-height: 1.28;
     color: var(--azul);
-    margin: 0 0 1.5rem;
+    margin: 0 0 1.75rem;
     text-wrap: balance;
   }
 
   .thesis {
-    font-size: 1.15rem;
+    font-size: 1.02rem;
     line-height: 1.6;
-    color: var(--ink);
-    margin: 0 0 1.25rem;
+    color: var(--ink-soft);
+    margin: 0 0 1.9rem;
+    max-width: 32rem;
   }
 
   .brecha {
-    font-size: 1.05rem;
+    font-size: 1.02rem;
     color: var(--ink-soft);
     font-style: italic;
-    margin: 0;
+    margin: 0 0 1.5rem;
   }
 
-  /* Dev-only affordance: an unfilled slot looks like an unfilled slot. */
-  .slot {
-    color: var(--ink-faint);
+  .chips { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  .chips a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
     font-family: var(--sans);
-    font-size: 0.95rem;
-    font-style: normal;
-    background: var(--sand-deep);
-    border: 1px dashed var(--rule);
-    padding: 0.5rem 0.75rem;
-    display: inline-block;
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+    color: var(--azul);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 0.45rem 0.95rem 0.45rem 0.8rem;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .chips svg { width: 0.95rem; height: 0.95rem; flex: none; }
+  .chips a:hover { background: var(--azul); color: var(--sand); border-color: var(--azul); }
+
+  /* Portrait as a Barragán plane: warm editorial B&W, an azul plane behind it. */
+  .portrait {
+    position: relative;
+    margin: 0;
+    aspect-ratio: 4 / 5;
+    max-height: 68vh;
+    justify-self: end;
+    width: 100%;
+  }
+  .portrait::after {
+    /* the azul plane — a real Barragán wall the portrait leans on, breaking the frame */
+    content: '';
+    position: absolute;
+    right: -1.6rem;
+    bottom: -1.6rem;
+    width: 82%;
+    height: 88%;
+    background: var(--azul);
+    z-index: 0;
+  }
+  .portrait img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 64% 26%;
+    /* treatment is baked into the asset (screenprint) — no runtime filter */
+    border-top: 3px solid var(--gold);
   }
 
-  hr {
-    border: 0;
-    border-top: 1px solid var(--gold);
-    margin: 3.5rem 0;
-  }
+  hr { border: 0; border-top: 1px solid var(--gold); margin: 3.5rem 0; }
 
   h2 {
     font-family: var(--sans);
@@ -208,34 +289,24 @@ const elsewhere = [
   .list { list-style: none; padding: 0; margin: 0; }
   .list li { margin-bottom: 1.1rem; line-height: 1.5; }
 
-  .note {
-    display: block;
-    font-size: 0.92rem;
-    color: var(--ink-soft);
-    margin-top: 0.15rem;
-  }
+  .note { display: block; font-size: 0.92rem; color: var(--ink-soft); margin-top: 0.15rem; }
 
   .dated li {
     display: grid;
     grid-template-columns: 3.5rem 1fr;
-    gap: 0.5rem;
+    gap: 0.75rem;
     align-items: baseline;
   }
-
   .date {
     font-family: var(--sans);
     font-size: 0.8rem;
     color: var(--ink-faint);
     font-variant-numeric: tabular-nums;
   }
+  .entry .note { margin-top: 0.1rem; }
 
   .action { margin: 0 0 4rem; }
-
-  .soon {
-    font-size: 1.05rem;
-    color: var(--ink);
-    margin: 0 0 1rem;
-  }
+  .soon { font-size: 1.05rem; color: var(--ink); margin: 0 0 1rem; }
 
   /* The single terracotta. If you are adding a second one, stop. */
   .cta {
@@ -245,14 +316,10 @@ const elsewhere = [
     letter-spacing: 0.02em;
     color: var(--terracotta);
     border: 1px solid var(--terracotta);
-    border-bottom: 1px solid var(--terracotta);
     padding: 0.6rem 1.1rem;
     transition: background 0.15s ease, color 0.15s ease;
   }
-  .cta:hover {
-    background: var(--terracotta);
-    color: var(--sand);
-  }
+  .cta:hover { background: var(--terracotta); color: var(--sand); }
 
   footer {
     display: flex;
@@ -265,9 +332,23 @@ const elsewhere = [
   footer a { color: var(--ink-soft); border-bottom: none; }
   footer a:hover { color: var(--azul); }
 
+  @media (max-width: 56rem) {
+    .fold {
+      grid-template-columns: 1fr;
+      gap: 2.25rem;
+      min-height: 0;
+    }
+    .portrait {
+      order: -1;
+      max-height: 52vh;
+      aspect-ratio: 3 / 2;
+      justify-self: stretch;
+    }
+    .portrait img { object-position: 64% 22%; }
+  }
+
   @media (max-width: 34rem) {
-    main { padding-top: 8vh; }
-    .identity { font-size: 1.45rem; }
+    main { padding-top: 6vh; }
     .dated li { grid-template-columns: 3rem 1fr; }
   }
 </style>
